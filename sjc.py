@@ -19,6 +19,7 @@ def sjc(lista_de_listas):
                 aux = lista_ordenada[i].copy()
                 lista_ordenada[i] = lista_ordenada[i+1].copy()
                 lista_ordenada[i+1] = aux.copy()
+                
         except:
             pass
         
@@ -26,9 +27,7 @@ def sjc(lista_de_listas):
 
         respostas.append(soma - lista_ordenada[i][0])
         soma += lista_ordenada[i][1]
-        
-        if respostas[0] != 0:
-            respostas[0] = 0
+
         i+=1
 
     
@@ -51,19 +50,19 @@ def sjc(lista_de_listas):
             break
         
 
-        respostas.append(soma - lista_ordenada[i][0]+ lista_ordenada[i][1])
-        
-
         try:
             if ((lista_ordenada[i+1][1] < lista_ordenada[i][1]) and soma >= lista_ordenada[i+1][0]):
                 aux = lista_ordenada[i].copy()
                 lista_ordenada[i] = lista_ordenada[i+1].copy()
                 lista_ordenada[i+1] = aux.copy()
+            
         except:
             pass
         
         
         soma += lista_ordenada[i][1]
+        respostas.append(soma - lista_ordenada[i][0])
+        
         
     
         i+=1
@@ -73,6 +72,7 @@ def sjc(lista_de_listas):
     sumresp = 0
     for valor in respostas:
         sumresp += valor
+        
     tretorno = sumresp/nelem
     del respostas
 
